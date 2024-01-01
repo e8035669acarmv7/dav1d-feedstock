@@ -46,7 +46,6 @@ outputs:
       commands:
       # Need these things
         - test -f ${PREFIX}/lib/libdav1d{{ SHLIB_EXT }}                       # [unix]
-        - test -f ${PREFIX}/lib/libdav1d.{{ so_name }}{{ SHLIB_EXT }}         # [osx]
         - test -f ${PREFIX}/lib/libdav1d.{{ so_name_major }}{{ SHLIB_EXT }}   # [osx]
         - test -f ${PREFIX}/lib/libdav1d{{ SHLIB_EXT }}.{{ so_name_major }}   # [linux]
         - test -f ${PREFIX}/lib/libdav1d{{ SHLIB_EXT }}.{{ so_name }}         # [linux]
@@ -100,7 +99,6 @@ outputs:
       run:
         - {{ pin_subpackage('_libdav1d_api', max_pin='x.x.x') }}              # [win]
     files:
-      - lib/libdav1d.{{ so_name }}{{ SHLIB_EXT }}                             # [osx]
       - lib/libdav1d.{{ so_name_major }}{{ SHLIB_EXT }}                       # [osx]
       - lib/libdav1d{{ SHLIB_EXT }}.{{ so_name_major }}                       # [linux]
       - lib/libdav1d{{ SHLIB_EXT }}.{{ so_name }}                             # [linux]
@@ -108,12 +106,12 @@ outputs:
     test:
       commands:
       # Need these things
-        - test -f ${PREFIX}/lib/libdav1d.{{ so_name }}{{ SHLIB_EXT }}         # [osx]
         - test -f ${PREFIX}/lib/libdav1d.{{ so_name_major }}{{ SHLIB_EXT }}   # [osx]
         - test -f ${PREFIX}/lib/libdav1d{{ SHLIB_EXT }}.{{ so_name_major }}   # [linux]
         - test -f ${PREFIX}/lib/libdav1d{{ SHLIB_EXT }}.{{ so_name }}         # [linux]
         - if not exist %PREFIX%\\Library\\bin\\dav1d.dll exit 1               # [win]
       # Exclude these things
+        - test ! -f ${PREFIX}/lib/libdav1d.{{ so_name }}{{ SHLIB_EXT }}       # [osx]
         - test ! -f ${PREFIX}/bin/dav1d                                       # [unix]
         - if exist %PREFIX%\\Library\\bin\\dav1d exit 1                       # [win]
         - test ! -f ${PREFIX}/lib/libdav1d{{ SHLIB_EXT }}                     # [unix]
