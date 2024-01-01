@@ -131,8 +131,8 @@ outputs:
       skip: true  # [not win]
     about:
       summary: >
-      An empty package that prevents multiple ABIs of libdavid
-      being installed simultaneously on Windows.
+        An empty package that prevents multiple ABIs of libdavid
+        being installed simultaneously on Windows.
 
 about:
   home: https://code.videolan.org/videolan/dav1d
