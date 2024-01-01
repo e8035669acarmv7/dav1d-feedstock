@@ -59,7 +59,7 @@ outputs:
         - test ! -f ${PREFIX}/lib/libdav1d.a                                  # [unix]
         - if exist %PREFIX%\\Library\\bin\\dav1d.dll exit 1                   # [win]
         - test ! -f ${PREFIX}/bin/dav1d                                       # [unix]
-        - if exist %PREFIX%\\Library\\bin\\dav1d                              # [win]
+        - if exist %PREFIX%\\Library\\bin\\dav1d exit 1                       # [win]
 
   # Everything needed to run the dav1d binary
   - name: dav1d
@@ -115,7 +115,7 @@ outputs:
         - if not exist %PREFIX%\\Library\\bin\\dav1d.dll exit 1               # [win]
       # Exclude these things
         - test ! -f ${PREFIX}/bin/dav1d                                       # [unix]
-        - if exist %PREFIX%\\Library\\bin\\dav1d                              # [win]
+        - if exist %PREFIX%\\Library\\bin\\dav1d exit 1                       # [win]
         - test ! -f ${PREFIX}/lib/libdav1d{{ SHLIB_EXT }}                     # [unix]
         - if exist %PREFIX%\\Library\\lib\\dav1d.lib exit 1                   # [win]
         - test ! -f ${PREFIX}/include/dav1d/dav1d.h                           # [unix]
