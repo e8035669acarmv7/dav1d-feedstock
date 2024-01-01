@@ -70,8 +70,8 @@ outputs:
       run:
         - {{ pin_subpackage('libdav1d' ~ so_name_major) }}
     files:
-      - bin/dav1d*                                                            # [unix]
-      - Library\\bin\\dav1d*                                                  # [win]
+      - bin/dav1d                                                             # [unix]
+      - Library\\bin\\dav1d.exe                                               # [win]
     test:
       commands:
       # Need these things
