@@ -1,9 +1,11 @@
 @echo on
 
+mkdir %SRC_DIR%\stage
+if errorlevel 1 exit 1
 
 meson setup builddir           ^
     %MESON_ARGS%               ^
-    --prefix=%LIBRARY_PREFIX%  ^
+    --prefix=%SRC_DIR%\stage   ^
     -Denable_tests=false       ^
     --buildtype=release
 if errorlevel 1 exit 1
