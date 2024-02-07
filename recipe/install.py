@@ -40,7 +40,6 @@ package.
 https://gist.github.com/carterbox/188ac74647e703cfa6700b58b076d712
 """
 
-import glob
 import os
 import pathlib
 import re
@@ -59,40 +58,21 @@ def glob_install(
     include: typing.List[str],
     exclude: typing.List[str] = [],
 ):
-    included = set(
-        itertools.chain(
-            *(
-                glob.glob(
-                    str(STAGE / pathlib.Path(item)),
-                    recursive=True,
-                )
-                for item in include
-            )
-        )
-    )
-    excluded = set(
-        itertools.chain(
-            *(
-                glob.glob(
-                    str(STAGE / pathlib.Path(item)),
-                    recursive=True,
-                )
-                for item in exclude
-            )
-        )
-    )
+    """Install files and symlinks (broken or not) from the glob expressions."""
+    included = set(itertools.chain(*(STAGE.glob(item) for item in include)))
+    excluded = set(itertools.chain(*(STAGE.glob(item) for item in exclude)))
     for match in sorted(included - excluded):
         match = pathlib.Path(match)
-        if match.exists():
+        if match.is_file() or match.is_symlink():
             relative = match.relative_to(STAGE)
-            if not match.is_dir():
-                print(relative)
-                os.makedirs((PREFIX / relative).parent, exist_ok=True)
-                shutil.copy(
-                    match,
-                    PREFIX / relative,
-                    follow_symlinks=False,
-                )
+            print(relative)
+            os.makedirs((PREFIX / relative).parent, exist_ok=True)
+            shutil.copy(
+                match,
+                PREFIX / relative,
+                # copy the link itself; not the linked-file
+                follow_symlinks=False,
+            )
 
 
 def sort_artifacts_based_on_name(basename):
@@ -101,7 +81,7 @@ def sort_artifacts_based_on_name(basename):
     print(f"Installing {PKG_NAME} to {PREFIX} for {target_platform}")
     print("Based on the package name, ", end="")
 
-    if re.match(r"^.+\-split$", PKG_NAME):
+    if PKG_NAME.endswith("-split"):
         raise ValueError("The top level package should not run this script.")
 
     # libfoo OR foo-dev OR libfoo-dev
@@ -109,15 +89,15 @@ def sort_artifacts_based_on_name(basename):
     # libdav1d, libv8, libm, libsecp256k1
     # libdav1d-dev, libv8-dev, libm-dev, libsecp256k1-dev
     if (
-        re.match(f"^lib{ basename }$", PKG_NAME)
-        or re.match(f"^{ basename }-dev$", PKG_NAME)
-        or re.match(f"^lib{ basename }-dev$", PKG_NAME)
+        PKG_NAME == f"lib{ basename }"
+        or PKG_NAME == f"{ basename }-dev"
+        or PKG_NAME == f"lib{ basename }-dev"
     ):
         print("this package is needed for compiling/linking.")
         glob_install(
             include=[
-                "include/**",
-                "lib/**",
+                "include/**/*",
+                "lib/**/*",
             ],
             exclude=[
                 # versioned libs
@@ -149,13 +129,13 @@ def sort_artifacts_based_on_name(basename):
 
     # foo
     # dav1d, v8, m, secp256k1
-    if re.match(f"^{ basename }$", PKG_NAME):
+    if PKG_NAME == basename:
         print("this package is tools, docs, and misc files needed for tools.")
         glob_install(
             include=[
-                "bin/**",
-                "doc/**",
-                "share/**",
+                "bin/**/*",
+                "doc/**/*",
+                "share/**/*",
             ],
             exclude=[
                 "bin/*.dll",
@@ -165,7 +145,7 @@ def sort_artifacts_based_on_name(basename):
 
     # libfoo-static
     # libdav1d-static, libv8-static, libm-static, libsecp256k1-static
-    if re.match(f"^lib{ basename }-static$", PKG_NAME):
+    if PKG_NAME == f"lib{ basename }-static":
         print("this package is anything needed for static linking.")
         glob_install(
             include=[
