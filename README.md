@@ -98,7 +98,7 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-_libdav1d_api-green.svg)](https://anaconda.org/conda-forge/_libdav1d_api) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/_libdav1d_api.svg)](https://anaconda.org/conda-forge/_libdav1d_api) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/_libdav1d_api.svg)](https://anaconda.org/conda-forge/_libdav1d_api) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/_libdav1d_api.svg)](https://anaconda.org/conda-forge/_libdav1d_api) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-dav1d-green.svg)](https://anaconda.org/conda-forge/dav1d) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dav1d.svg)](https://anaconda.org/conda-forge/dav1d) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dav1d.svg)](https://anaconda.org/conda-forge/dav1d) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dav1d.svg)](https://anaconda.org/conda-forge/dav1d) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-dav1d--dev-green.svg)](https://anaconda.org/conda-forge/dav1d-dev) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dav1d-dev.svg)](https://anaconda.org/conda-forge/dav1d-dev) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dav1d-dev.svg)](https://anaconda.org/conda-forge/dav1d-dev) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dav1d-dev.svg)](https://anaconda.org/conda-forge/dav1d-dev) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-libdav1d6-green.svg)](https://anaconda.org/conda-forge/libdav1d6) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libdav1d6.svg)](https://anaconda.org/conda-forge/libdav1d6) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libdav1d6.svg)](https://anaconda.org/conda-forge/libdav1d6) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libdav1d6.svg)](https://anaconda.org/conda-forge/libdav1d6) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libdav1d7-green.svg)](https://anaconda.org/conda-forge/libdav1d7) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libdav1d7.svg)](https://anaconda.org/conda-forge/libdav1d7) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libdav1d7.svg)](https://anaconda.org/conda-forge/libdav1d7) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libdav1d7.svg)](https://anaconda.org/conda-forge/libdav1d7) |
 
 Installing dav1d
 ================
@@ -110,16 +110,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `_libdav1d_api, dav1d, dav1d-dev, libdav1d6` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `_libdav1d_api, dav1d, dav1d-dev, libdav1d7` can be installed with `conda`:
 
 ```
-conda install _libdav1d_api dav1d dav1d-dev libdav1d6
+conda install _libdav1d_api dav1d dav1d-dev libdav1d7
 ```
 
 or with `mamba`:
 
 ```
-mamba install _libdav1d_api dav1d dav1d-dev libdav1d6
+mamba install _libdav1d_api dav1d dav1d-dev libdav1d7
 ```
 
 It is possible to list all of the versions of `_libdav1d_api` available on your platform with `conda`:
