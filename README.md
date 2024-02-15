@@ -3,11 +3,25 @@ About dav1d-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/dav1d-feedstock/blob/main/LICENSE.txt)
 
+
+About dav1d
+-----------
+
 Home: https://code.videolan.org/videolan/dav1d
 
 Package license: BSD-2-Clause
 
 Summary: dav1d is the fastest AV1 decoder on all platforms
+
+About _libdav1d_api
+-------------------
+
+
+
+Package license: 
+
+Summary: An empty package that prevents multiple ABIs of libdavid being installed simultaneously on Windows.
+
 
 Current build status
 ====================
@@ -81,7 +95,10 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-_libdav1d_api-green.svg)](https://anaconda.org/conda-forge/_libdav1d_api) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/_libdav1d_api.svg)](https://anaconda.org/conda-forge/_libdav1d_api) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/_libdav1d_api.svg)](https://anaconda.org/conda-forge/_libdav1d_api) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/_libdav1d_api.svg)](https://anaconda.org/conda-forge/_libdav1d_api) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-dav1d-green.svg)](https://anaconda.org/conda-forge/dav1d) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dav1d.svg)](https://anaconda.org/conda-forge/dav1d) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dav1d.svg)](https://anaconda.org/conda-forge/dav1d) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dav1d.svg)](https://anaconda.org/conda-forge/dav1d) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dav1d--dev-green.svg)](https://anaconda.org/conda-forge/dav1d-dev) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dav1d-dev.svg)](https://anaconda.org/conda-forge/dav1d-dev) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dav1d-dev.svg)](https://anaconda.org/conda-forge/dav1d-dev) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dav1d-dev.svg)](https://anaconda.org/conda-forge/dav1d-dev) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libdav1d7-green.svg)](https://anaconda.org/conda-forge/libdav1d7) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libdav1d7.svg)](https://anaconda.org/conda-forge/libdav1d7) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libdav1d7.svg)](https://anaconda.org/conda-forge/libdav1d7) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libdav1d7.svg)](https://anaconda.org/conda-forge/libdav1d7) |
 
 Installing dav1d
 ================
@@ -93,41 +110,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `dav1d` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `_libdav1d_api, dav1d, dav1d-dev, libdav1d7` can be installed with `conda`:
 
 ```
-conda install dav1d
-```
-
-or with `mamba`:
-
-```
-mamba install dav1d
-```
-
-It is possible to list all of the versions of `dav1d` available on your platform with `conda`:
-
-```
-conda search dav1d --channel conda-forge
+conda install _libdav1d_api dav1d dav1d-dev libdav1d7
 ```
 
 or with `mamba`:
 
 ```
-mamba search dav1d --channel conda-forge
+mamba install _libdav1d_api dav1d dav1d-dev libdav1d7
+```
+
+It is possible to list all of the versions of `_libdav1d_api` available on your platform with `conda`:
+
+```
+conda search _libdav1d_api --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search _libdav1d_api --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search dav1d --channel conda-forge
+mamba repoquery search _libdav1d_api --channel conda-forge
 
-# List packages depending on `dav1d`:
-mamba repoquery whoneeds dav1d --channel conda-forge
+# List packages depending on `_libdav1d_api`:
+mamba repoquery whoneeds _libdav1d_api --channel conda-forge
 
-# List dependencies of `dav1d`:
-mamba repoquery depends dav1d --channel conda-forge
+# List dependencies of `_libdav1d_api`:
+mamba repoquery depends _libdav1d_api --channel conda-forge
 ```
 
 
@@ -149,7 +166,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
@@ -197,5 +214,6 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@carterbox](https://github.com/carterbox/)
 * [@jaimergp](https://github.com/jaimergp/)
 
