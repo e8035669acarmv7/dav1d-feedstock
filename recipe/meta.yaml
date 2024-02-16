@@ -1,4 +1,4 @@
-{% set version = "1.3.0" %}
+{% set version = "1.4.0" %}
 # library version is different from project version
 # Check 'meson.build' upstream in every release!
 {% set so_name = "7.0.0" %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://code.videolan.org/videolan/dav1d/-/archive/{{ version }}/dav1d-{{ version }}.tar.gz
-  sha256: 1b3e75433dd69eb88ff3190ed1b1707ca5b9f43260b6348c551455c885eaab3a
+  sha256: 0b6d484fc3d20541a21403812499530b72875dee0ec88f682cb1d73943dfc156
 
 build:
   number: 0
@@ -117,8 +117,7 @@ outputs:
       skip: true  # [not win]
     about:
       summary: >
-        An empty package that prevents multiple ABIs of libdavid
-        being installed simultaneously on Windows.
+        An empty package that prevents multiple ABIs of libdavid being installed simultaneously on Windows.
 
 about:
   home: https://code.videolan.org/videolan/dav1d
